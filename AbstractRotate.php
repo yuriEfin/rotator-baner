@@ -112,7 +112,7 @@ abstract class AbstractRotate extends \yii\base\Widget
     public function init()
     {
         parent::init();
-        if (!\Yii::getAlias('@rotate-banner')) {
+        if (!isset(\Yii::$aliases['@rotate-banner'])) {
             \Yii::setAlias('@rotate-banner', dirname(__FILE__) . '/assets');
         }
         $this->db = \Yii::$app->get($this->componentDb);
