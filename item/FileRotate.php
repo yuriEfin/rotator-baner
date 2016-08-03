@@ -17,17 +17,21 @@ class FileRotate extends \gambit\banner\rotator\ComposeRotate
 
     /**
      * singleton
-     * @param FileRotate $this
-     * @param type $this
      */
-    public function getInstance($this)
+    public function getInstance()
     {
         if (!self::$_instance) {
-            self::$_instance = new self($this);
+            self::$_instance = new self();
         }
+        return self::$_instance;
     }
 
-    public function __construct($vendor)
+    private function __construct()
+    {
+        
+    }
+
+    public function initObject($vendor)
     {
         $this->vendor = $vendor;
     }

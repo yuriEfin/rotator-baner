@@ -29,7 +29,7 @@ class ComposeRotate extends \yii\base\Widget implements ICompositInterface
         return [];
     }
 
-    public static function typeMetric()
+    public static function typeCount()
     {
         return stripos($this->count, '%') !== FALSE ? 'percent' : 'integer';
     }

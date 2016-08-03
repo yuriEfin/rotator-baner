@@ -34,7 +34,7 @@ abstract class AbstractRotate extends \yii\base\Widget
     public $modelRotate;
 
     /**
-     * Инстанс конкретной реализации ротатора - файл или база или ...
+     * Инстанс конкретной реализации ротатора - файл или база или, например, Curl запрос на сторонний ресурс по API или еще как-то
      * @var \gambit\banner\rotator\ComposeRotate 
      */
     public $rotateInstance = null;
@@ -103,8 +103,6 @@ abstract class AbstractRotate extends \yii\base\Widget
      */
     public $pathDir = '@rotate-banner/assets';
 
-    
-
     /**
      * запрошенные баннеры
      * @var array
@@ -127,10 +125,11 @@ abstract class AbstractRotate extends \yii\base\Widget
         }
         switch ($this->typeRotate) {
             case self::TYPE_DB:
-                $this->rotateInstance = DbRotate::getInstance($this);
+                $this->rotateInstance = DbRotate::getInstance()->initObject($this);
                 break;
             case self::TYPE_FILE:
-                $this->rotateInstance = FileRotate::getInstance($this);
+                $this->rotateInstance = FileRotate::getInstance()->initObject($this);
+                ;
                 break;
         }
     }

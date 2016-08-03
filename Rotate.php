@@ -10,6 +10,7 @@ class Rotate extends AbstractRotate
 
     public $class_wrap = 'show_banner';
     public $banners = [];
+    public $isNoIndex = true;
 
     /**
      * Наименование шаблона обертки для баннеров
@@ -21,7 +22,7 @@ class Rotate extends AbstractRotate
      * шаблон обертки баннеров по умолчанию
      * @var type 
      */
-    public $template = '<div class="{class_wrap}">{banner}</div>';
+    public $template = '<div id="{id}" class="{class_wrap}">{banner}</div>';
 
     public function init()
     {
@@ -32,10 +33,19 @@ class Rotate extends AbstractRotate
 
     public function renderItem($item)
     {
-        return strtr($this->template, [
+        $html = '';
+        if ($this->isNoIndex) {
+            $html .= '<noindex>';
+        }
+        $html .= strtr($this->template, [
             '{class_wrap}' => $this->class_wrap,
-            '{banner}' => file_get_contents($item['path_file']),
+            '{id}' => $item['id'],
+            '{banner}' => $this->getView()->renderDynamic(file_get_contents($item['path_file'])),
         ]);
+        if ($this->isNoIndex) {
+            $html .= '</noindex>';
+        }
+        return $html;
     }
 
     public function renderItems()

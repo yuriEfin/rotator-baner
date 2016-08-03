@@ -19,20 +19,23 @@ class DbRotate extends \gambit\banner\rotator\ComposeRotate
 
     /**
      * singleton 
-     * @param type $this
-     * @param DbRotate $this
      */
-    public function getInstance($this)
+    public function getInstance()
     {
         if (!self::$_instance) {
-            self::$_instance = new self($this);
+            self::$_instance = (new self());
         }
+        return self::$_instance;
     }
 
-    private function __construct($vendor)
+    public function initObject($vendor)
     {
         $this->vendor = $vendor;
-        $this->model = $this->vendor->getModel();
+    }
+
+    private function __construct()
+    {
+        
     }
 
     public function getItems()
