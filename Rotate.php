@@ -27,7 +27,6 @@ class Rotate extends AbstractRotate
     public function init()
     {
         parent::init();
-        $config = \yii\helpers\ArrayHelper::merge($this->config, $this->getConfigDefault());
         $this->setInstance();
     }
 

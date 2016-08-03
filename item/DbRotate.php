@@ -31,6 +31,7 @@ class DbRotate extends \gambit\banner\rotator\ComposeRotate
     public function initObject($vendor)
     {
         $this->vendor = $vendor;
+        $this->db = \Yii::$app->get($this->vendor->componentDb);
     }
 
     private function __construct()
