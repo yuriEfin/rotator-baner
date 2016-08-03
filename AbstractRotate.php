@@ -165,7 +165,7 @@ abstract class AbstractRotate extends \yii\base\Widget
      * Рендеринг отдельного баннера
      * Логика отображения
      */
-    abstract public function renderItem();
+    abstract public function renderItem($item);
 
     /**
      * Рендеринг баннеров
