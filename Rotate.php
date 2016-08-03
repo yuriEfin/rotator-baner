@@ -32,7 +32,10 @@ class Rotate extends AbstractRotate
 
     public function renderItem($item)
     {
-        
+        return strtr($this->template, [
+            '{class_wrap}' => $this->class_wrap,
+            '{banner}' => file_get_contents($item['path_file']),
+        ]);
     }
 
     public function renderItems()
