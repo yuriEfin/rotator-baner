@@ -22,7 +22,7 @@ class ComposeRotate extends \yii\base\Widget implements ICompositInterface
      * Счетчик
      * @var type 
      */
-    public $counter;
+    public $qty;
 
     public function getItems()
     {
